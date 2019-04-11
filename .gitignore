@@ -1,0 +1,16 @@
+/backend/node_modules**/*
+/frontend/node_modules**/*
+
+/backend/.env
+/frontend/.env
+
+/redis/data/*
+
+mobile/node_modules/**/*
+mobile/expo/*
+mobile/npm-debug.*
+mobile/*.jks
+mobile/*.p12
+mobile/*.key
+mobile/*.mobileprovision
+mobile/.env

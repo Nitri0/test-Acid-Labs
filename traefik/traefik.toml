@@ -1,0 +1,23 @@
+accessLogsFile = "/dev/stdout"
+
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["http"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+#    [entryPoints.http.redirect]
+#    entryPoint = "https"
+
+[web]
+address = ":8085"
+
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "acidlab-example.org"
+watch = true
+swarmmode = true
+exposedbydefault = false
+
+[file]

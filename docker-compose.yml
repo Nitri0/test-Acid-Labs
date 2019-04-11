@@ -1,0 +1,57 @@
+version: '3'
+services:
+  web:
+    build: ./frontend/
+    ports:
+     - "3000:3000"     
+    networks:
+      - backend     
+    depends_on:
+      - back
+    environment:
+      - REACT_APP_API_URL=http://acidlab-example.org/API
+    labels:
+      - traefik.backend=web
+      - "traefik.frontend.rule=PathPrefixStrip:/"
+      - traefik.enable=true 
+  back:
+    build: ./backend/
+    ports:
+      - 3500:3500
+    depends_on:
+      - redis
+    networks:
+      - backend
+    environment:
+      - REDIS_IP=redis
+      - REDIS_PORT=6379
+    labels:
+      - traefik.backend=back
+      - "traefik.frontend.rule=PathPrefixStrip:/API"
+      - traefik.enable=true      
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - backend      
+
+  traefik:
+    image: traefik
+    command: --api --docker
+    networks:
+      - backend
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.toml:/etc/traefik/traefik.toml
+
+
+networks:
+  backend:    
+    driver: "bridge"
