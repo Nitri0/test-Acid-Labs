@@ -35,7 +35,7 @@ export default class LinksScreen extends React.Component {
 
   async getInfoCountry(c){
     this.setState({loadingBar: true})
-    const url = "http://ec2-3-85-56-134.compute-1.amazonaws.com:3500/"
+    const url = "http://ec2-3-85-56-134.compute-1.amazonaws.com/API"
     let dataModal = {}
     try {
       const result = await axios.post(url, {lng:c.coordinate.longitude,lat:c.coordinate.latitude})
@@ -51,20 +51,20 @@ export default class LinksScreen extends React.Component {
           errorMsg:""
         }
       }
+      this.showModal(dataModal)
     } catch (error) {
       Alert.alert(
         //title
         'OPS!',
         //body
-        `ocurrio algo inesperado`,
+        `Ocurrio algo inesperado (server error)`,
         [
           {text: 'cerrar', onPress: () => console.log('No Pressed')},
         ],
-        { cancelable: false }
+        { cancelable: true }
         //clicking out side of alert will not cancel        
       )
     }
-    this.showModal(dataModal)
   }
 
   showModal(dataModal){
@@ -139,7 +139,7 @@ export default class LinksScreen extends React.Component {
           <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.ModalInsideView}>
               <Text style={styles.TitleTextStyle}>{this.state.dataModal.title}</Text>
-              {this.renderTextModal()}
+              {this.state.show ? this.renderTextModal(): null}
               <Button  title="Close" onPress={() => this.closeModal()} style={styles.closeBotom}/>
             </View>
           </View>            
