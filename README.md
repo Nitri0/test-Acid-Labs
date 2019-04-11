@@ -1,11 +1,14 @@
 # AcidLabs Test
 
-## Requerimientos
+
+&nbsp;
+### Requerimientos
 * Docker
 * Docker Compose
 
 
-## Despliegue
+&nbsp;
+### Despliegue
 
 1. Clonar repositorio
 ```
@@ -27,12 +30,14 @@
 5. Ingresa a la url: [**http://acidlab-example.org/**](http://acidlab-example.org/)
 
 
-## Porbar aplicacion web sin realizar deploy
+&nbsp;
+### Porbar aplicacion web sin realizar deploy
 
 Visita [**aquí**](http://ec2-3-85-56-134.compute-1.amazonaws.com/)
 
 
-## Probar mobile app
+&nbsp;
+### Probar mobile app
 
 1. Descarga Expo app [**aquí**](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www)
 
@@ -40,17 +45,23 @@ Visita [**aquí**](http://ec2-3-85-56-134.compute-1.amazonaws.com/)
 
 
 2. Login con las siguientes credenciales:
-**Username:** acidlabstest
-**Password:** 123456
+
+
+&nbsp;**Username:** acidlabstest
+
+
+&nbsp;**Password:** 123456
 
 3. Ejecuta el proyecto **acidlabs-test**
 
 
-## Puntos de mejora
+&nbsp;
+#### Puntos de mejora
 * (Backend) Implementar interceptores de axios para reintentar peticiones fallidas.
 * (Frontend) Implementar redux
 * (Frontend/Mobile) Mejorar ux/ui
 * (Mobile) Catch de errores
 * (Mobile) Loading al realizar la consulta.
 * (Devops) Agregar certificados ssl
+* (Frontend/Backend/Mobile) Pruebas unitaras
 
